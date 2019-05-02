@@ -16,13 +16,13 @@ using namespace std;
 
 template<typename T, typename U>
 T maxx1(T x, U y){
-	return max(x, y);
+   return max(x, y);
 }
 
 template<typename T, typename U>
 T max1(T x, U y){
-	//cout<<1<<"\n";
-	return (x.compare(y) < 0) ? y : x;
+   //cout<<1<<"\n";
+   return (x.compare(y) < 0) ? y : x;
 }
 
 //Explicit instantiation
