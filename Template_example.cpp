@@ -76,23 +76,23 @@ template<typename T, int size>
 class Stack
 {
 private:
-	T m_Buffer[size];
-	int m_Top{-1};
+  T m_Buffer[size];
+  int m_Top{-1};
 
 public:
-	void Push(const T& elem){
-	  m_Buffer[++m_Top] = elem;
-	}
+  void Push(const T& elem){
+    m_Buffer[++m_Top] = elem;
+  }
+  
+  void Pop();
+  
+  const T& Top() const{
+	return m_Buffer[m_Top];
+  }
 
-	void Pop();
-
-	const T& Top() const{
-	  return m_Buffer[m_Top];
-	}
-
-	bool IsEmpty(){
-	  return m_Top == -1;
-	}
+  bool IsEmpty(){
+   return m_Top == -1;
+ }
 };
 
 template<typename T, int size>
