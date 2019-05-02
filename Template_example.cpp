@@ -120,7 +120,6 @@ void Printer<std::vector<int>>::Print(){
 	cout << "\n";
 }
 
-
 //instead of specializing the whole 
 //class specialized the function only
 
@@ -143,7 +142,7 @@ void Printer<std::vector<int>>::Print(){
 int main()
 {
     //ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
-    
+	
     cout << maxx1(10, 3) << "\n";
     //cout<<max1(-1,2,3)<<"\n";
     string a = "a";
@@ -191,6 +190,6 @@ int main()
     std::vector<int>v{1,2,3,4};
     Printer<std::vector<int>> pv(&v);
     pv.Print();
-    
+	
     return 0;
 }
