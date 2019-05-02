@@ -31,8 +31,8 @@ template string max1(string x, string y);
 //Explicit Specialization
 // no need to write: template<> T func_name<T>();
 template<> const char* max1(const char* x, const char* y){
-	//cout<<2<<"\n";
-	return (strcmp(x, y) < 0) ? y : x;
+   //cout<<2<<"\n";
+   return (strcmp(x, y) < 0) ? y : x;
 }
 
 template<int T>
@@ -75,24 +75,24 @@ void print2(T&& a, Params&&... args){
 template<typename T, int size>
 class Stack
 {
-	private:
-		T m_Buffer[size];
-		int m_Top{-1};
+private:
+	T m_Buffer[size];
+	int m_Top{-1};
 
-	public:
-		void Push(const T& elem){
-			m_Buffer[++m_Top] = elem;
-		}
+public:
+	void Push(const T& elem){
+		m_Buffer[++m_Top] = elem;
+	}
 
-		void Pop();
+	void Pop();
 
-		const T& Top() const{
-			return m_Buffer[m_Top];
-		}
+	const T& Top() const{
+		return m_Buffer[m_Top];
+	}
 
-		bool IsEmpty(){
-			return m_Top == -1;
-		}
+	bool IsEmpty(){
+		return m_Top == -1;
+	}
 };
 
 template<typename T, int size>
@@ -102,15 +102,15 @@ void Stack<T, size>::Pop(){
 
 template<typename T>
 class Printer{
-	public:
-		Printer(T* data) : m_pdata(data) {}
-		
-		void Print(){
-			cout << *m_pdata << "\n";
-		}
+public:
+	Printer(T* data) : m_pdata(data) {}
 
-	private:
-		T *m_pdata;
+	void Print(){
+		cout << *m_pdata << "\n";
+	}
+
+private:
+	T *m_pdata;
 };
 
 template<>
@@ -131,7 +131,7 @@ void Printer<std::vector<int>>::Print(){
 
 // 	public:
 // 		Printer(std::vector<int> *data) : m_pdata(data) {} 
-		
+
 // 		void Print(){
 // 			for(auto x : *m_pdata)
 // 				std::cout << x << " ";
@@ -141,55 +141,55 @@ void Printer<std::vector<int>>::Print(){
 
 int main()
 {
-    //ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
-	
-    cout << maxx1(10, 3) << "\n";
-    //cout<<max1(-1,2,3)<<"\n";
-    string a = "a";
-    string b = "b";
-    cout << max1(a, b) << "\n";
+//ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-    cout << max1("A", "B") << "\n";
-    
-    const int i = 3;
-    print<sizeof(i)>();
-    
-    int arr[]{1,2,3,4};
-    int sum = Sum(arr, 4);
-    cout << sum << "\n";
+cout << maxx1(10, 3) << "\n";
+//cout<<max1(-1,2,3)<<"\n";
+string a = "a";
+string b = "b";
+cout << max1(a, b) << "\n";
 
-    print1({1,2,3,4});
+cout << max1("A", "B") << "\n";
 
-    for(auto x : {1,2,3})
-    	cout << x << " ";
-    cout << "\n";
+const int i = 3;
+print<sizeof(i)>();
 
-    print2(1, 2.5, 3, "4");
+int arr[]{1,2,3,4};
+int sum = Sum(arr, 4);
+cout << sum << "\n";
 
-    Stack<int, 4> s;
-    s.Push(3);
-    s.Push(1);
-    s.Push(6);
-    s.Push(9);
+print1({1,2,3,4});
 
-    while(!s.IsEmpty()){
-    	cout << s.Top() << " ";
-    	s.Pop();
-    }
+for(auto x : {1,2,3})
+	cout << x << " ";
+cout << "\n";
 
-    cout << "\n";
+print2(1, 2.5, 3, "4");
 
-    int data = 5;
-    double f = 8.2f;
+Stack<int, 4> s;
+s.Push(3);
+s.Push(1);
+s.Push(6);
+s.Push(9);
 
-    Printer<int> p1(&data);
-    p1.Print();
-    Printer<double> p2(&f);
-    p2.Print();
+while(!s.IsEmpty()){
+	cout << s.Top() << " ";
+	s.Pop();
+}
 
-    std::vector<int>v{1,2,3,4};
-    Printer<std::vector<int>> pv(&v);
-    pv.Print();
+cout << "\n";
+
+int data = 5;
+double f = 8.2f;
+
+Printer<int> p1(&data);
+p1.Print();
+Printer<double> p2(&f);
+p2.Print();
+
+std::vector<int>v{1,2,3,4};
+Printer<std::vector<int>> pv(&v);
+pv.Print();
 	
     return 0;
 }
