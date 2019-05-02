@@ -37,29 +37,29 @@ template<> const char* max1(const char* x, const char* y){
 
 template<int T>
 void print(){
-	cout << T << "\n";
+   cout << T << "\n";
 }
 
 template<typename T>
 T Sum(T *parr, int size){
-	T sum{};//uniform initialization of modern C++, same as T sum = 0;
-	for(int i = 0; i != size; ++i){
-		sum += parr[i];
+  T sum{};//uniform initialization of modern C++, same as T sum = 0;
+  for(int i = 0; i != size; ++i){
+	  sum += parr[i];
 	}
-	return sum;
+  return sum;
 }
 
 template<typename T>
 void print1(initializer_list<T> args){
-	for(const auto& x : args){
-		cout << x << " ";
-	}
-	cout<<"\n";	  
+   for(const auto& x : args){
+	  cout << x << " ";
+   }
+   cout<<"\n";	  
 }
 
 //Base Case for variadic template
 void print2(){
-	cout << "\n";
+  cout << "\n";
 }
 
 //Variadic Templates
@@ -67,9 +67,9 @@ void print2(){
 template<typename T, typename... Params>
 //function parameter pack
 void print2(T&& a, Params&&... args){
-	cout << a;
-	if(sizeof... (args)) cout << ",";
-	print2(std::forward<Params>(args)... );
+  cout << a;
+  if(sizeof... (args)) cout << ",";
+  print2(std::forward<Params>(args)... );
 }
 
 template<typename T, int size>
@@ -81,43 +81,43 @@ private:
 
 public:
 	void Push(const T& elem){
-		m_Buffer[++m_Top] = elem;
+	  m_Buffer[++m_Top] = elem;
 	}
 
 	void Pop();
 
 	const T& Top() const{
-		return m_Buffer[m_Top];
+	  return m_Buffer[m_Top];
 	}
 
 	bool IsEmpty(){
-		return m_Top == -1;
+	  return m_Top == -1;
 	}
 };
 
 template<typename T, int size>
 void Stack<T, size>::Pop(){
-	--m_Top;
+  --m_Top;
 }
 
 template<typename T>
 class Printer{
 public:
-	Printer(T* data) : m_pdata(data) {}
+  Printer(T* data) : m_pdata(data) {}
 
-	void Print(){
-		cout << *m_pdata << "\n";
-	}
+  void Print(){
+	cout << *m_pdata << "\n";
+  }
 
 private:
-	T *m_pdata;
+  T *m_pdata;
 };
 
 template<>
 void Printer<std::vector<int>>::Print(){
-	for(auto x : *m_pdata)
-		cout << x << " ";
-	cout << "\n";
+  for(auto x : *m_pdata)   
+     cout << x << " ";
+  cout << "\n";
 }
 
 //instead of specializing the whole 
@@ -141,55 +141,55 @@ void Printer<std::vector<int>>::Print(){
 
 int main()
 {
-//ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+ //ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 
-cout << maxx1(10, 3) << "\n";
-//cout<<max1(-1,2,3)<<"\n";
-string a = "a";
-string b = "b";
-cout << max1(a, b) << "\n";
+ cout << maxx1(10, 3) << "\n";
+ //cout<<max1(-1,2,3)<<"\n";
+ string a = "a";
+ string b = "b";
+ cout << max1(a, b) << "\n";
 
-cout << max1("A", "B") << "\n";
+ cout << max1("A", "B") << "\n";
 
-const int i = 3;
-print<sizeof(i)>();
+ const int i = 3;
+ print<sizeof(i)>();
 
-int arr[]{1,2,3,4};
-int sum = Sum(arr, 4);
-cout << sum << "\n";
+ int arr[]{1,2,3,4};
+ int sum = Sum(arr, 4);
+ cout << sum << "\n";
 
-print1({1,2,3,4});
+ print1({1,2,3,4});
 
-for(auto x : {1,2,3})
-	cout << x << " ";
-cout << "\n";
+ for(auto x : {1,2,3})
+ 	cout << x << " ";
+ cout << "\n";
 
-print2(1, 2.5, 3, "4");
+ print2(1, 2.5, 3, "4");
 
-Stack<int, 4> s;
-s.Push(3);
-s.Push(1);
-s.Push(6);
-s.Push(9);
+ Stack<int, 4> s;
+ s.Push(3);
+ s.Push(1);
+ s.Push(6);
+ s.Push(9);
 
-while(!s.IsEmpty()){
-	cout << s.Top() << " ";
-	s.Pop();
-}
+ while(!s.IsEmpty()){
+ 	cout << s.Top() << " ";
+ 	s.Pop();
+ }
 
-cout << "\n";
+ cout << "\n";
 
-int data = 5;
-double f = 8.2f;
+ int data = 5;
+ double f = 8.2f;
 
-Printer<int> p1(&data);
-p1.Print();
-Printer<double> p2(&f);
-p2.Print();
+ Printer<int> p1(&data);
+ p1.Print();
+ Printer<double> p2(&f);
+ p2.Print();
 
-std::vector<int>v{1,2,3,4};
-Printer<std::vector<int>> pv(&v);
-pv.Print();
+ std::vector<int>v{1,2,3,4};
+ Printer<std::vector<int>> pv(&v);
+ pv.Print();
 	
-    return 0;
+ return 0;
 }
