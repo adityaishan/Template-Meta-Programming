@@ -44,8 +44,8 @@ template<typename T>
 T Sum(T *parr, int size){
   T sum{};//uniform initialization of modern C++, same as T sum = 0;
   for(int i = 0; i != size; ++i){
-	  sum += parr[i];
-	}
+     sum += parr[i];
+  }
   return sum;
 }
 
